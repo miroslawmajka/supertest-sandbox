@@ -1,3 +1,5 @@
 {
-  "jest.jestCommandLine": "node_modules\\.bin\\jest"
+  "jest.jestCommandLine": "node_modules\\.bin\\jest",
+  "javascript.suggestionActions.enabled": false,
+  "typescript.suggestionActions.enabled": false
 }

@@ -1,17 +1,17 @@
 const express = require('express');
 const axios = require('axios');
 
-const app = express();
+const server = express();
 
-app.get('/', function (req, res) {
-  res.status(200).send('Hello World');
+server.get('/', function (_request, response) {
+  response.status(200).send('Hello World');
 });
 
-app.get('/user', function (req, res) {
-  res.status(200).json({ name: 'john' });
+server.get('/user', function (_request, response) {
+  response.status(200).json({ name: 'john' });
 });
 
-app.get('/entries', async function (request, response) {
+server.get('/entries', async function (_request, response) {
   axios
     .get('https://api.publicapis.org/entries')
     .then((entriesReponse) => {
@@ -24,4 +24,4 @@ app.get('/entries', async function (request, response) {
     });
 });
 
-module.exports = app;
+module.exports = server;
