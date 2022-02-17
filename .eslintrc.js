@@ -3,9 +3,9 @@ module.exports = {
     browser: true,
     commonjs: true,
     es2021: true,
+    jest: true,
   },
-  extends: ['prettier'],
-  plugins: ['prettier'],
+  extends: 'eslint:recommended',
   parserOptions: {
     ecmaVersion: 'latest',
   },

@@ -10,5 +10,7 @@ it('works', () => {
     .expect(200)
     .end(function (err, res) {
       if (err) throw err;
+
+      return res;
     });
 });
