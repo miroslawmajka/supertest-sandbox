@@ -1,5 +1,13 @@
 const express = require('express');
 const axios = require('axios');
+const { graphqlHTTP } = require('express-graphql');
+const {
+  default: expressPlayground,
+} = require('graphql-playground-middleware-express');
+
+const { startDatabase } = require('./database');
+const schema = require('./schema');
+const resolvers = require('./resolvers');
 
 const server = express();
 
@@ -23,5 +31,22 @@ server.get('/entries', async function (_request, response) {
       response.status(500).send('Error with third party service');
     });
 });
+
+const context = async () => {
+  const db = await startDatabase();
+
+  return { db };
+};
+
+server.use(
+  '/graphql',
+  graphqlHTTP({
+    schema,
+    rootValue: resolvers,
+    context,
+  })
+);
+
+server.get('/playground', expressPlayground({ endpoint: '/graphql' }));
 
 module.exports = server;
