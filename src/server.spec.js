@@ -8,7 +8,7 @@ afterAll(async () => {
   await stopDatabase();
 });
 
-it('john endpoint works', async () => {
+it('user endpoint returns the name john', async () => {
   const response = await request(app).get('/user');
 
   expect(response.status).toEqual(200);
@@ -27,7 +27,7 @@ it('entries endpoint works', async () => {
 });
 
 // TODO: leftover thread running with the DB - solve this
-it.skip('fetch users', async () => {
+it('fetch graphql users', async () => {
   const response = await request(app)
     .post('/graphql')
     .set('Accept', 'application/json')
