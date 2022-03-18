@@ -33,9 +33,9 @@ server.get('/entries', async function (_request, response) {
 });
 
 const context = async () => {
-  const db = await startDatabase();
-
-  return { db };
+  // TODO: enable when DB can run with tests
+  // const db = await startDatabase();
+  // return { db };
 };
 
 server.use(
